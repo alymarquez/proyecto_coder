@@ -11,6 +11,17 @@
 </div>
 
 
+<p> escriba un tipo de animal para ver si hay alguno en adopcion:     
+    <form action="buscar/" method="GET">
+        {% csrf_token %}
+        <input typer="text" name="q" id="buscador">
+    
+        <input type="submit" value="buscar">
+    
+    
+    </form>
+
+</p>
 {% for animal in animalitos %}
 
 <article>

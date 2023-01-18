@@ -68,3 +68,16 @@ def crear_usuario(request):
         usuario.objects.create(nombre=request.POST['nombre'], apellido=request.POST['apellido'], dni=request.POST['dni'], email=request.POST['email'])
         return redirect('')
 
+
+
+def buscar(request):
+    if request.GET["q"]:
+
+        q = request.GET['q']
+        animales = animal.objects.filter(tipo_de_animal__icontains=q)
+        return render(request, 'buscar.html',{"animales":animales})
+
+    else: 
+         respuesta = "no existen esos datos"
+         
+         return HttpResponse(respuesta)

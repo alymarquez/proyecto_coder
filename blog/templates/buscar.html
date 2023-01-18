@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+{% if animales %}
+
+<ul>
+    {% for i in animales %}
+    <li> {{i.nombre}} </li>
+    <li> {{i.curiosidades}} </li>
+
+    {% endfor %}
+
+
+</ul>
+
+{% endif %}
+
+
+{% endblock %}
