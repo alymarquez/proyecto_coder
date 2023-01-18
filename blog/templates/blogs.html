@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h2 class="text-center text-uppercase">blogs</h2> 
+
+<div class="text-center">lee blogs subidos por la comidad o crea el tuyo aqui <a href="{% url 'crear blogs' %}"> <button> ➳ crear blog</button></a> </div>
+
+{% for blog in blogs %}
+
+<P> </P>
+<article>
+        <h3>{{ blog.titulo }}</h3>
+
+<a href="{% url 'contenido_blog' blog.id %}">
+
+    <button> ➳ ver artículo </button>
+
+</a>
+<P> </P>
+
+</article>
+
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<h2 class="text-center text-uppercase">adopcion🐶</h2>
+<div class="text-center">
+    <h5>aquí veras todos los animalitos en adopción en <h style="color:violet"> huellitas!</h></h5>
+<p>adopta un animalito o publica uno que este en busca de un hogar<a href="{% url 'registra tu mascota' %}"><button> ➳ registrar mascota </button></a></p> 
+</div>
+
+
+{% for animal in animalitos %}
+
+<article>
+        <h3>{{ animal.nombre }} <a style="color:aquamarine"> {{ animal.tipo_de_animal }}</a></h3>
+         {{ animal.curiosidades }}
+         <button>adoptar :)</button>
+         <P>            </P>
+         <P>            </P>
+</article>
+
+    {% endfor %}
+
+{% endblock %}

@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<header class="text-center">
+<p>
+    <h2 class="text-center text-uppercase">registra tu usuario</h2> 
+
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button>
+            ➳ registrar 
+        </button>
+
+    </form>
+    
+
+</p>
+
+</header>
+
+{% endblock %}

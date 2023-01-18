@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+{% for detalle in detalles %}
+
+<div>
+    <h3>{{ detalle.titulo }}</h3>
+    <p>{{ detalle.descripcion }}</p>
+
+    <a href="{% url 'blogs' %}">
+
+        <button> ➳ volver </button>
+    
+    </a>
+</div>
+
+
+
+{% endfor %}
+
+{% endblock %}
+
