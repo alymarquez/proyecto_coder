@@ -14,6 +14,7 @@ class animal(models.Model):
     edad= models.IntegerField()
     tipo_de_animal = models.CharField(max_length=200)
     curiosidades = models.TextField(null= True)
+    imagen = models.ImageField(upload_to='animales', null = True)
 
     def __str__(self):
         return self.nombre

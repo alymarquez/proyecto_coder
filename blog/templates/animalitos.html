@@ -26,7 +26,8 @@
 
 <article>
         <h3>{{ animal.nombre }} <a style="color:aquamarine"> {{ animal.tipo_de_animal }}</a></h3>
-         {{ animal.curiosidades }}
+        <img src="{% static '{{animal.imagen}}'%}">
+        {{ animal.curiosidades }}
          <button>adoptar :)</button>
          <P>            </P>
          <P>            </P>

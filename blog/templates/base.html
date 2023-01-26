@@ -36,7 +36,14 @@
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'animalitos' %}">adopcion</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'tienda' %}">tienda</a></li>
                         <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'about' %}">about</a></li>
-                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'registro' %}">registro</a></li>
+                        {% if not request.user.is_aunthenticated%}
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" href="{% url 'login' %}">login</a></li>
+                        {% endif %}
+
+                        {% if request.user.is_aunthenticated%}
+                        <li class="nav-item mx-0 mx-lg-1"><a class="nav-link py-3 px-0 px-lg-3 rounded" >hola {{user.username}} :)</a></li>
+                        {% endif %}
+
 
                     </ul>
                 </div>
@@ -48,7 +55,7 @@
                 <!-- Masthead Avatar Image-->
                 <!-- <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />---->
                 <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">Bienvenido a huellitas🐾</h1>
+                <h1 class="masthead-heading text-uppercase mb-0">Bienvenido {{ request.user.username }} a huellitas🐾</h1>
                 <!-- Icon Divider-->
                 <div class="divider-custom divider-light">
                     <div class="divider-custom-line"></div>

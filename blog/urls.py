@@ -11,6 +11,9 @@ urlpatterns = [
     path('registra tu mascota/', views.crear_animal, name="registra tu mascota"),
     path('registro/', views.crear_usuario, name= "registro"),
     path('tienda/', views.tienda, name= "tienda"),
-    path('animalitos/buscar/', views.buscar, name= "buscar")
+    path('animalitos/buscar/', views.buscar, name= "buscar"),
+    path('login', views.login_request, name="login"),
+    path('register', views.register, name='register'),
+    path('logout', views.CustomLogoutView.as_view(), name='logout')
 
 ]
