@@ -19,7 +19,7 @@
     <p>{{detalle.descripcion}}</p>
 
     {% if detalle.owner == user %}
-    <a href="{% url 'eliminar blog' detalle.id%}">eliminar</a>  <a href="{% url 'editar blog' detalle.id%}">editar</a>
+    <p><a href="{% url 'eliminar blog' detalle.id%}">eliminar</a> <a href="{% url 'editar blog' detalle.id%}">editar</a></p>
     {% endif %}
 
     </div>
