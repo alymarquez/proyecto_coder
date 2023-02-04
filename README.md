@@ -8,7 +8,7 @@ La temática de la pagina es un blog de animales para compartir sobre ellos, tam
 
 # instalación
 1) Crea una carpeta contenedora.
-2) Abrir consola, ubicarse en la carpeta para crear y activar un ambiente virtual.
+2) Abrir consola. Ubicarse en la carpeta, crear y activar un ambiente virtual.
 3) Clonar el proyecto descargado dentro de la carpeta contenedora.
 2) Abrir Visual Studio Code y seleecionar "File" --> "Open Folder". Seleccionar la carpeta donde se haya guardada el repositorio.
 3) Abrir la terminal e instalar las dependencias con --> pip install -r requirements.txt
