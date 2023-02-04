@@ -10,6 +10,8 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
+ #bc1a63
+ 
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -33,7 +35,7 @@
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #1abc9c;
+  --bs-primary:  #bc1a63;
   --bs-secondary: #2c3e50;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
@@ -87,6 +89,16 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+
+.box {
+  border: black 10px solid;
+}
+
+.card-project:hover{
+  border: 1px solid #fff;
+  cursor: pointer;
 }
 
 hr {
@@ -606,6 +618,10 @@ progress {
   height: auto;
 }
 
+img {
+  float:left;
+}
+
 .img-thumbnail {
   padding: 0.25rem;
   background-color: #fff;
@@ -636,12 +652,16 @@ progress {
 .container-lg,
 .container-md,
 .container-sm {
+  --bs-gutter-x: 1.5rem;
+  --bs-gutter-y: 0;
   width: 100%;
-  padding-right: var(--bs-gutter-x, 0.75rem);
-  padding-left: var(--bs-gutter-x, 0.75rem);
+  padding-right: calc(var(--bs-gutter-x) * 0.5);
+  padding-left: calc(var(--bs-gutter-x) * 0.5);
   margin-right: auto;
   margin-left: auto;
 }
+
+
 
 @media (min-width: 576px) {
   .container-sm, .container {
@@ -693,6 +713,9 @@ progress {
 .row-cols-auto > * {
   flex: 0 0 auto;
   width: auto;
+
+  padding-left: 36px;
+  padding-right: 36px;
 }
 
 .row-cols-1 > * {
@@ -3945,7 +3968,7 @@ textarea.form-control-lg {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
-  color: #1abc9c;
+  color: #bc1a63;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
@@ -3955,7 +3978,7 @@ textarea.form-control-lg {
   }
 }
 .nav-link:hover, .nav-link:focus {
-  color: #15967d;
+  color: #bc1a63;
 }
 .nav-link.disabled {
   color: #6c757d;
@@ -4002,7 +4025,7 @@ textarea.form-control-lg {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #1abc9c;
+  background-color: #bc1a63;
 }
 
 .nav-fill > .nav-link,
@@ -4518,7 +4541,7 @@ textarea.form-control-lg {
   word-wrap: break-word;
   background-color: #fff;
   background-clip: border-box;
-  border: 0.125rem solid rgba(0, 0, 0, 0.125);
+  border: 0.200rem solid rgba(0, 0, 0, 0.125);
   border-radius: 0.5rem;
 }
 .card > hr {
@@ -4796,6 +4819,7 @@ textarea.form-control-lg {
 .breadcrumb-item.active {
   color: #6c757d;
 }
+   
 
 .pagination {
   display: flex;
@@ -7666,6 +7690,11 @@ textarea.form-control-lg {
   line-height: 2 !important;
 }
 
+#texto{
+  display: inline-block;
+  vertical-align: top;
+}
+
 .text-start {
   text-align: left !important;
 }
@@ -7675,7 +7704,9 @@ textarea.form-control-lg {
 }
 
 .text-center {
+  margin-top: 50px;
   text-align: center !important;
+  width: 100%;
 }
 
 .text-decoration-none {
@@ -7810,12 +7841,12 @@ textarea.form-control-lg {
 
 .bg-primary {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
+    background-color: rgb(222, 174, 210); 
 }
 
 .bg-secondary {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-secondary-rgb), var(--bs-bg-opacity)) !important;
+  background-color: rgb(102, 0, 51);
 }
 
 .bg-success {
@@ -11371,13 +11402,13 @@ html {
   color: #fff;
 }
 #mainNav .navbar-nav li.nav-item a.nav-link:hover {
-  color: #1abc9c;
+  color: #bc1a63;
 }
 #mainNav .navbar-nav li.nav-item a.nav-link:active, #mainNav .navbar-nav li.nav-item a.nav-link:focus {
   color: #fff;
 }
 #mainNav .navbar-nav li.nav-item a.nav-link.active {
-  color: #1abc9c;
+  color: #bc1a63;
 }
 #mainNav .navbar-toggler {
   font-size: 80%;
@@ -11399,11 +11430,11 @@ html {
   }
   #mainNav .navbar-nav > li.nav-item > a.nav-link.active {
     color: #fff;
-    background: #1abc9c;
+    background: #bc1a63;
   }
   #mainNav .navbar-nav > li.nav-item > a.nav-link.active:active, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:focus, #mainNav .navbar-nav > li.nav-item > a.nav-link.active:hover {
     color: #fff;
-    background: #1abc9c;
+    background: #bc1a63;
   }
 
   #mainNav.navbar-shrink {
@@ -11507,5 +11538,5 @@ html {
 }
 
 .copyright {
-  background-color: #1a252f;
+  background-color:  #AF2054;
 }

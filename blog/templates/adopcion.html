@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+
+
+<div>
+    <h5>si esta interesado en adoptar este animalito comunicate con el siguiente email:</h5>
+    <p>{{ object.email }}</p>
+    <a href="{% url 'animalitos' %}">
+
+        <button> ➳ volver </button>
+    
+    </a>
+</div>
+
+
+{% endblock %}

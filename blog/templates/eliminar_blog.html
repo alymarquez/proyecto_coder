@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<span>¿Deseas eliminar a {{object}}?</span>
+
+{% if object.owner == user %}
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+
+    <input type="submit" value="confirmar"/>
+</form>
+{% endif %}
+
+
+{% endblock %}

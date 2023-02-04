@@ -6,19 +6,29 @@
 
 
 {% for detalle in detalles %}
+<div class="text-center">
 
-<div>
-    <h3>{{ detalle.titulo }}</h3>
-    <p>{{ detalle.descripcion }}</p>
+    <h1>{{detalle.titulo}}</h1>
+    <h2 class="my-2 h5 text-muted">{{detalle.date|date:'F jS Y'}}</h2>
+  
+    <div class="container card d-flex align-items-center flex-column my-4">
+    {% if detalle.imagen %}
+    <img src="{{ detalle.imagen.url }}" width="350px"/>
+    {% endif %}
+  
+    <p>{{detalle.descripcion}}</p>
 
+    {% if detalle.owner == user %}
+    <a href="{% url 'eliminar blog' detalle.id%}">eliminar</a>  <a href="{% url 'editar blog' detalle.id%}">editar</a>
+    {% endif %}
+
+    </div>
     <a href="{% url 'blogs' %}">
 
         <button> ➳ volver </button>
     
     </a>
 </div>
-
-
 
 {% endfor %}
 

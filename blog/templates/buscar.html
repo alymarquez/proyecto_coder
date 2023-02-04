@@ -8,13 +8,25 @@
 
 <ul>
     {% for i in animales %}
-    <li> {{i.nombre}} </li>
-    <li> {{i.curiosidades}} </li>
+    <div class="container">
+        <div class="card card-body">
+        <a href="{% url 'adoptar' i.id %}"> 
+            <img src="{{ i.imagen.url }}" width="100px" style="float:right"/>
+            <li> <h1>{{i.nombre}}</h1> </li>
+            <a><h5>{{i.curiosidades}} </h5></a>  
+
+    
+        </a>
+        </div>
+    </div>
 
     {% endfor %}
-
+    {% endif %}
 
 </ul>
+{% if not animales %}
+
+<h1>no hay animales </h1>
 
 {% endif %}
 

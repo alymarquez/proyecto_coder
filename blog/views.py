@@ -1,11 +1,17 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
-from .models import blog, animal, usuario
+from django.http import HttpResponse, Http404
+from .models import blog, animal, Avatar
 from .forms import *
 from django.urls import reverse, reverse_lazy
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
-from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth import login, authenticate
 from django.contrib.auth.views import LogoutView
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+from django.views.generic import UpdateView, DeleteView, CreateView
+from django.views.generic.detail import DetailView
+
+
 
 def index(request):
     return render(request, 'index.html')
@@ -17,6 +23,7 @@ def about(request):
 
 
 
+#BLOG
 def blogs(request):
     blogs = blog.objects.all()
     return render(request, 'blogs.html', {
@@ -33,43 +40,70 @@ def contenido_blog(request, id):
         })
 
 
+@login_required 
 def crear_blogs(request):
-    if request.method == 'GET':
-        return render(request, 'crear_blogs.html', {'form': CrearBlog})
-    
-    else:
-        blog.objects.create(titulo=request.POST['titulo'], descripcion=request.POST['descripcion'])
-        return redirect('/blogs/')
+    if request.method == "POST":
+        form = CrearBlog(request.POST, request.FILES)
+
+        if form.is_valid():
+            data = form.cleaned_data
+            blogs = blog(titulo=data['titulo'], descripcion=data['descripcion'], imagen=data['imagen'], owner=request.user)
+            blogs.save()
+            url_exitosa = reverse('blogs')
+            return redirect(url_exitosa)
+    else:  # GET
+        form = CrearBlog()
+    return render(
+        request=request,
+        template_name='crear_blogs.html',
+        context={'form': form},
+    )
 
 
+class BlogDeleteView(LoginRequiredMixin, DeleteView):
+    model = blog
+    success_url = reverse_lazy('blogs')
+    template_name = 'eliminar_blog.html'
 
+class BlogUpdateView(LoginRequiredMixin, UpdateView):
+    model = blog
+    fields = ['titulo', 'descripcion']
+    success_url = reverse_lazy('blogs')
+    template_name = 'actualizar_blog.html'
+        
+
+
+#ADOPCION
 def animalitos(request):
     animalitos = animal.objects.all()
     return render(request, 'animalitos.html', {
         'animalitos': animalitos
     })
 
-
+@login_required
 def crear_animal(request):
-    if request.method == 'GET':
-        return render(request, 'crear_animales.html', {'form': CrearAnimal})
-    
-    else:
-        animal.objects.create(tipo_de_animal=request.POST['tipo_de_animal'], edad=request.POST['edad'], nombre=request.POST['nombre'], curiosidades=request.POST['curiosidades'])
-        return redirect('/animalitos/')
+    if request.method == "POST":
+        form = CrearAnimal(request.POST, request.FILES)
+
+        if form.is_valid():
+            data = form.cleaned_data
+            animales = animal(tipo_de_animal=data['tipo_de_animal'], edad=data['edad'], nombre=data['nombre'], curiosidades=data['curiosidades'], imagen=data['imagen'], email=data['email'])
+            animales.save()
+            url_exitosa = reverse('animalitos')
+            return redirect(url_exitosa)
+    else:  # GET
+        form = CrearAnimal()
+
+    return render(
+        request=request,
+        template_name='crear_animales.html',
+        context={'form': form},
+    )
 
 
-def tienda(request):
-    return render(request, 'tienda.html')
-
-def crear_usuario(request):
-    if request.method == 'GET':
-        return render(request, 'usuario.html', {'form': CrearUsuario})
-    
-    else:
-        usuario.objects.create(nombre=request.POST['nombre'], apellido=request.POST['apellido'], dni=request.POST['dni'], email=request.POST['email'])
-        return redirect('')
-
+class AnimalDetalle(DetailView):
+    model = animal
+    template_name = 'adopcion.html'
 
 
 def buscar(request):
@@ -86,6 +120,11 @@ def buscar(request):
 
 
 
+def tienda(request):
+    return render(request, 'tienda.html')
+
+
+#REGISTER Y LOGIN
 def register(request):
     if request.method == "POST":
 
@@ -101,8 +140,6 @@ def register(request):
         form = UserRegisterForm()
 
     return render(request, "registro.html", {"form": form})    
-
-
 
 
 def login_request(request):
@@ -121,7 +158,6 @@ def login_request(request):
 
                 return render(request, "index.html")
            
-
     else:
         form = AuthenticationForm()
 
@@ -131,8 +167,34 @@ def login_request(request):
 
 class CustomLogoutView(LogoutView):
     template_name = 'logout.html'
-    next_page = reverse_lazy('/')
+    next_page = reverse_lazy('')
+
+
+class ProfileUpdateView(LoginRequiredMixin, UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    success_url = reverse_lazy('')
+    template_name = "formulario_perfil.html"
+
+    def get_object(self, queryset=None):
+        return self.request.user
 
 
 
-        
+def agregar_avatar(request):
+    if request.method == "POST":
+        formulario = AvatarFormulario(request.POST, request.FILES) 
+
+        if formulario.is_valid():
+            avatar = formulario.save()
+            avatar.user = request.user
+            avatar.save()
+            url_exitosa = reverse('')
+            return redirect(url_exitosa)
+    else: 
+        formulario = AvatarFormulario()
+    return render(
+        request=request,
+        template_name='formulario_avatar.html',
+        context={'form': formulario},
+    )

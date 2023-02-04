@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<p>tu usuario es <b>{{ object.username }}</b></p>
+
+    <h3>editar datos:</h3>
+    <form method="POST">
+        {% csrf_token %}
+            {{ form.as_p }}
+        <input type="submit" value="salvar"/>
+    </form>
+
+
+{% endblock %}
