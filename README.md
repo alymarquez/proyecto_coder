@@ -13,3 +13,8 @@ La temática de la pagina es un blog de animales para compartir sobre ellos, tam
 2) Abrir Visual Studio Code y selecionar "File" --> "Open Folder". Seleccionar la carpeta donde se haya guardada el repositorio.
 3) Abrir la terminal e instalar las dependencias con --> pip install -r requirements.txt
 
+# DJANGO
+  1. Base de datos: python mananage.py migrate
+  2. Admin: python mananage.py createsuperuser
+  3. Ejecutar el servidor: python mananage.py runserver
+
