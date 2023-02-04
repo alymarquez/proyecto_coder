@@ -1,5 +1,5 @@
-# sobre huellitas!
-Pagina web estilo blog desarrollada como proyecto del curso Python de Coderhouse, desarrollada con todos los conocimientos aprendidos durante la cursada. 
+# Proyecto CoderHouse!
+Pagina web estilo blog creada como proyecto del curso Python de Coderhouse, desarrollada con todos los conocimientos aprendidos durante la cursada. 
 La temática de la pagina es un blog de animales para compartir sobre ellos, tambien se puede adoptar o registrar una mascota que este en busca de un hogar. 
 
 # requisitos
