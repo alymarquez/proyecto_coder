@@ -7,9 +7,9 @@ La temática de la pagina es un blog de animales para compartir sobre ellos, tam
 * Tener Django 4.1.5
 
 # instalación
-1) Crea una carpeta contenedora.
+1) Crear una carpeta contenedora.
 2) Abrir consola. Ubicarse en la carpeta, crear y activar un ambiente virtual.
 3) Clonar el proyecto descargado dentro de la carpeta contenedora.
-2) Abrir Visual Studio Code y seleecionar "File" --> "Open Folder". Seleccionar la carpeta donde se haya guardada el repositorio.
+2) Abrir Visual Studio Code y selecionar "File" --> "Open Folder". Seleccionar la carpeta donde se haya guardada el repositorio.
 3) Abrir la terminal e instalar las dependencias con --> pip install -r requirements.txt
 
